@@ -1,0 +1,11 @@
+# Install into the EXISTING UV environment; do not create another environment.
+datasets==4.8.4
+transformers==5.22.1
+torch>=2.2
+numpy>=1.26
+scikit-learn>=1.4
+matplotlib>=3.8
+lime==0.2.0.1
+pandas>=2.2
+tqdm>=4.66
+ipykernel>=6.29

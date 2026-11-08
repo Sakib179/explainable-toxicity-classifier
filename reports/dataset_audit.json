@@ -1,0 +1,345 @@
+{
+  "source": "local",
+  "label_rule": "toxicity >= 0.5",
+  "splits": {
+    "train": {
+      "rows": 1804874,
+      "schema": "{'text': Value('string'), 'toxicity': Value('float32'), 'severe_toxicity': Value('float32'), 'obscene': Value('float32'), 'threat': Value('float32'), 'insult': Value('float32'), 'identity_attack': Value('float32'), 'sexual_explicit': Value('float32')}",
+      "nulls": {
+        "text": 0,
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_scores": {
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_or_empty_rows": 0,
+      "toxic": 144334,
+      "not_toxic": 1660540,
+      "toxic_fraction": 0.0799690172277954,
+      "toxicity_quantiles": {
+        "0": 0.0,
+        "0.25": 0.0,
+        "0.5": 0.0,
+        "0.75": 0.1666666716337204,
+        "0.9": 0.4000000059604645,
+        "0.95": 0.6000000238418579,
+        "0.99": 0.8333333134651184,
+        "1": 1.0
+      },
+      "exactly_0_5": 37896,
+      "ambiguous_0_4_to_0_6_inclusive": 129241,
+      "threshold_sensitivity": {
+        "0.4": 201476,
+        "0.5": 144334,
+        "0.6": 96410
+      },
+      "toxicity_histogram": {
+        "[0, 0.1)": 1266229,
+        "[0.1, 0.3)": 272556,
+        "[0.3, 0.4)": 64613,
+        "[0.4, 0.5)": 57142,
+        "[0.5, 0.6)": 47924,
+        "[0.6, 0.8)": 65579,
+        "[0.8, 1.000001)": 30831
+      },
+      "characters": {
+        "0": 1.0,
+        "0.25": 94.0,
+        "0.5": 202.0,
+        "0.75": 414.0,
+        "0.9": 747.0,
+        "0.95": 953.0,
+        "0.99": 999.0,
+        "1": 1906.0
+      },
+      "whitespace_words": {
+        "0": 1.0,
+        "0.25": 16.0,
+        "0.5": 35.0,
+        "0.75": 72.0,
+        "0.9": 128.0,
+        "0.95": 159.0,
+        "0.99": 178.0,
+        "1": 317.0
+      },
+      "word_length_by_label": {
+        "0": {
+          "0": 1.0,
+          "0.25": 16.0,
+          "0.5": 35.0,
+          "0.75": 72.0,
+          "0.9": 129.0,
+          "0.95": 159.0,
+          "0.99": 178.0,
+          "1": 317.0
+        },
+        "1": {
+          "0": 1.0,
+          "0.25": 17.0,
+          "0.5": 34.0,
+          "0.75": 65.0,
+          "0.9": 113.0,
+          "0.95": 150.0,
+          "0.99": 177.0,
+          "1": 311.0
+        }
+      },
+      "word_count_above": {
+        "128": 178418,
+        "192": 1645,
+        "256": 8,
+        "512": 0
+      },
+      "duplicate_rows_exact": 24051,
+      "duplicate_rows_normalized": 28366,
+      "normalized_groups_with_conflicting_binary_labels": 809
+    },
+    "validation": {
+      "rows": 97320,
+      "schema": "{'text': Value('string'), 'toxicity': Value('float32'), 'severe_toxicity': Value('float32'), 'obscene': Value('float32'), 'threat': Value('float32'), 'insult': Value('float32'), 'identity_attack': Value('float32'), 'sexual_explicit': Value('float32')}",
+      "nulls": {
+        "text": 0,
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_scores": {
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_or_empty_rows": 0,
+      "toxic": 7671,
+      "not_toxic": 89649,
+      "toxic_fraction": 0.07882244143033293,
+      "toxicity_quantiles": {
+        "0": 0.0,
+        "0.25": 0.0,
+        "0.5": 0.0,
+        "0.75": 0.1666666716337204,
+        "0.9": 0.4000000059604645,
+        "0.95": 0.6000000238418579,
+        "0.99": 0.8333333134651184,
+        "1": 1.0
+      },
+      "exactly_0_5": 2022,
+      "ambiguous_0_4_to_0_6_inclusive": 6831,
+      "threshold_sensitivity": {
+        "0.4": 10689,
+        "0.5": 7671,
+        "0.6": 5103
+      },
+      "toxicity_histogram": {
+        "[0, 0.1)": 68788,
+        "[0.1, 0.3)": 14484,
+        "[0.3, 0.4)": 3359,
+        "[0.4, 0.5)": 3018,
+        "[0.5, 0.6)": 2568,
+        "[0.6, 0.8)": 3470,
+        "[0.8, 1.000001)": 1633
+      },
+      "characters": {
+        "0": 1.0,
+        "0.25": 95.0,
+        "0.5": 204.0,
+        "0.75": 417.0,
+        "0.9": 748.0,
+        "0.95": 956.0,
+        "0.99": 999.0,
+        "1": 1971.0
+      },
+      "whitespace_words": {
+        "0": 1.0,
+        "0.25": 17.0,
+        "0.5": 35.0,
+        "0.75": 72.0,
+        "0.9": 128.0,
+        "0.95": 159.0,
+        "0.99": 179.0,
+        "1": 335.0
+      },
+      "word_length_by_label": {
+        "0": {
+          "0": 1.0,
+          "0.25": 16.0,
+          "0.5": 35.0,
+          "0.75": 73.0,
+          "0.9": 129.0,
+          "0.95": 160.0,
+          "0.99": 179.0,
+          "1": 335.0
+        },
+        "1": {
+          "0": 1.0,
+          "0.25": 17.0,
+          "0.5": 35.0,
+          "0.75": 65.0,
+          "0.9": 116.0,
+          "0.95": 151.0,
+          "0.99": 178.0,
+          "1": 209.0
+        }
+      },
+      "word_count_above": {
+        "128": 9689,
+        "192": 95,
+        "256": 3,
+        "512": 0
+      },
+      "duplicate_rows_exact": 474,
+      "duplicate_rows_normalized": 565,
+      "normalized_groups_with_conflicting_binary_labels": 26
+    },
+    "test": {
+      "rows": 97320,
+      "schema": "{'text': Value('string'), 'toxicity': Value('float32'), 'severe_toxicity': Value('float32'), 'obscene': Value('float32'), 'threat': Value('float32'), 'insult': Value('float32'), 'identity_attack': Value('float32'), 'sexual_explicit': Value('float32')}",
+      "nulls": {
+        "text": 0,
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_scores": {
+        "toxicity": 0,
+        "severe_toxicity": 0,
+        "obscene": 0,
+        "threat": 0,
+        "insult": 0,
+        "identity_attack": 0,
+        "sexual_explicit": 0
+      },
+      "invalid_or_empty_rows": 0,
+      "toxic": 7777,
+      "not_toxic": 89543,
+      "toxic_fraction": 0.07991163173037402,
+      "toxicity_quantiles": {
+        "0": 0.0,
+        "0.25": 0.0,
+        "0.5": 0.0,
+        "0.75": 0.1666666716337204,
+        "0.9": 0.4000000059604645,
+        "0.95": 0.6000000238418579,
+        "0.99": 0.8333333134651184,
+        "1": 1.0
+      },
+      "exactly_0_5": 1989,
+      "ambiguous_0_4_to_0_6_inclusive": 6898,
+      "threshold_sensitivity": {
+        "0.4": 10846,
+        "0.5": 7777,
+        "0.6": 5210
+      },
+      "toxicity_histogram": {
+        "[0, 0.1)": 68352,
+        "[0.1, 0.3)": 14731,
+        "[0.3, 0.4)": 3391,
+        "[0.4, 0.5)": 3069,
+        "[0.5, 0.6)": 2567,
+        "[0.6, 0.8)": 3536,
+        "[0.8, 1.000001)": 1674
+      },
+      "characters": {
+        "0": 1.0,
+        "0.25": 93.0,
+        "0.5": 202.0,
+        "0.75": 413.0,
+        "0.9": 742.0,
+        "0.95": 950.0,
+        "0.99": 999.0,
+        "1": 1535.0
+      },
+      "whitespace_words": {
+        "0": 1.0,
+        "0.25": 16.0,
+        "0.5": 35.0,
+        "0.75": 71.0,
+        "0.9": 127.0,
+        "0.95": 159.0,
+        "0.99": 179.0,
+        "1": 266.0
+      },
+      "word_length_by_label": {
+        "0": {
+          "0": 1.0,
+          "0.25": 16.0,
+          "0.5": 35.0,
+          "0.75": 72.0,
+          "0.9": 128.0,
+          "0.95": 159.0,
+          "0.99": 179.0,
+          "1": 266.0
+        },
+        "1": {
+          "0": 1.0,
+          "0.25": 17.0,
+          "0.5": 34.0,
+          "0.75": 64.0,
+          "0.9": 110.0,
+          "0.95": 147.19999999999982,
+          "0.99": 176.0,
+          "1": 201.0
+        }
+      },
+      "word_count_above": {
+        "128": 9515,
+        "192": 88,
+        "256": 1,
+        "512": 0
+      },
+      "duplicate_rows_exact": 458,
+      "duplicate_rows_normalized": 573,
+      "normalized_groups_with_conflicting_binary_labels": 21
+    }
+  },
+  "overlaps": {
+    "train__validation": {
+      "unique_normalized_texts": 1320,
+      "rows_in_train": 10129,
+      "rows_in_validation": 1724
+    },
+    "train__test": {
+      "unique_normalized_texts": 1363,
+      "rows_in_train": 10503,
+      "rows_in_test": 1761
+    },
+    "validation__test": {
+      "unique_normalized_texts": 686,
+      "rows_in_validation": 1018,
+      "rows_in_test": 1004
+    }
+  },
+  "clean_rows": {
+    "train": 1774208,
+    "validation": 96069,
+    "test": 96747
+  },
+  "majority_only_accuracy": {
+    "train": 0.9200309827722046,
+    "validation": 0.9211775585696671,
+    "test": 0.9200883682696259
+  }
+}

@@ -1,0 +1,8 @@
+{"id":"stress_01","kind":"authored_stress_case","text":"I am Muslim and proud of my community.","expected_label":0,"note":"Identity mention: paired diagnostic, not real-world sourced text."}
+{"id":"stress_02","kind":"authored_stress_case","text":"I am Christian and proud of my community.","expected_label":0,"note":"Identity mention: paired diagnostic, not real-world sourced text."}
+{"id":"stress_03","kind":"authored_stress_case","text":"I am gay and proud of my community.","expected_label":0,"note":"Identity mention: paired diagnostic, not real-world sourced text."}
+{"id":"stress_04","kind":"authored_stress_case","text":"I am straight and proud of my community.","expected_label":0,"note":"Identity mention: paired diagnostic, not real-world sourced text."}
+{"id":"stress_05","kind":"authored_stress_case","text":"Please do not call other people idiots.","expected_label":0,"note":"Negation and opposition to insults."}
+{"id":"stress_06","kind":"authored_stress_case","text":"They called me an idiot; I am reporting the harassment.","expected_label":0,"note":"Reporting abusive speech rather than directing it at someone."}
+{"id":"stress_07","kind":"authored_stress_case","text":"You're a worthless idiot and nobody wants you here.","expected_label":1,"note":"Direct personal attack without strong profanity."}
+{"id":"stress_08","kind":"authored_stress_case","text":"That was a damn good explanation. Thanks!","expected_label":0,"note":"Profanity in positive feedback."}
