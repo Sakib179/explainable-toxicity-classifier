@@ -45,10 +45,63 @@ baseline checkpoint. Common settings are AdamW, maximum length **256 tokens**,
 batch size **16**, gradient accumulation **2**, and **10% warmup**. The head
 learning rate is five times the encoder rate.
 
-The seeded random search tested **four configurations** from learning rates
-`1e-5/3e-5/5e-5`, weight decay `0/0.01/0.1`, and dropout `0.1/0.2`.
-Trial 3 had the highest model-selection AP: **0.743152**, compared with
-**0.739177** for the untuned model. Test predictions were not used for selection.
+### Search design and completed work
+
+I used **seeded random search without replacement** over **18 possible
+combinations**, testing **four candidates plus one fixed reference**. The saved
+outputs show three completed epochs for every candidate: **12 search epochs**,
+or **15 end-to-end fine-tuning epochs including the reference**. The frozen
+head-only baseline was trained separately.
+
+| Hyperparameter | Search values | Reason for testing it |
+| --- | --- | --- |
+| Encoder learning rate | `1e-5`, `3e-5`, `5e-5` | Compare smaller and larger updates to pretrained weights. |
+| Weight decay | `0`, `0.01`, `0.1` | Compare no weight penalty with stronger regularization. |
+| Classifier-head dropout | `0.1`, `0.2` | Check whether additional dropout improves validation performance. |
+
+Each candidate used the **same baseline checkpoint, data partitions, training
+seed, shuffled-data order, effective batch size of 32, and three-epoch limit**.
+Validation AP was checked after every epoch. Early stopping had patience **1**;
+all four trials continued improving in AP and completed all three epochs.
+Only head dropout was varied; encoder dropout remained unchanged.
+
+### All completed trial results
+
+| Run | Encoder learning rate | Weight decay | Head dropout | Best epoch | Validation AP | Change vs. reference |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Fixed reference | `2e-05` | 0.01 | 0.1 | 3 | 0.739177 | — |
+| Trial 1 | `1e-05` | 0.01 | 0.2 | 3 | 0.732119 | -0.007058 |
+| Trial 2 | `1e-05` | 0.00 | 0.1 | 3 | 0.731382 | -0.007795 |
+| **Trial 3 (selected)** | `3e-05` | 0.01 | 0.1 | 3 | 0.743152 | +0.003975 |
+| Trial 4 | `5e-05` | 0.10 | 0.2 | 3 | 0.742446 | +0.003269 |
+
+The full numeric table is available as
+[search_trials.csv](reports/final/search_trials.csv), extracted from the saved
+notebook output. The reference learning rate `2e-5` is separate from the
+18-combination search space. These results cover four sampled combinations,
+not a full grid search.
+
+### What the search showed
+
+- **Trials 1 and 2:** Both `1e-5` configurations scored below the reference
+  within the three-epoch budget. This does not rule out improvement with longer
+  training. Their different decay/dropout settings do not isolate either effect.
+- **Trial 3:** Changing the reference learning rate from `2e-5` to `3e-5`, while
+  keeping decay and dropout unchanged, raised validation AP from **0.739177 to
+  0.743152**, an absolute gain of **0.003975**. This was the selected candidate.
+- **Trial 4:** The combined `5e-5`, decay `0.1`, dropout `0.2` configuration
+  reached **0.742446**, slightly below Trial 3. More aggressive combined settings
+  did not provide a further gain; this comparison does not isolate one parameter.
+
+### Selection rules and separate threshold tuning
+
+I selected the **best validation-AP checkpoint**, while retaining the fixed
+reference if no candidate improved it. The test set was excluded from this choice.
+After locking the models, a different 3,000-comment validation partition selected
+prediction thresholds by toxic F1: **0.691624** for frozen, **0.795823** for
+untuned, and **0.886669** for tuned. The final test comparison reports both these
+thresholds and the common **0.5** operating point to separate weight-training
+changes from threshold effects.
 
 ### Screenshot of tuning results
 
@@ -67,6 +120,10 @@ label cutoff**. These are results on the same **10,000 held-out test comments**:
 | Frozen baseline | 0.691624 | 89.42% | 0.4336 | 0.3827 | 0.5313 | 0.4449 |
 | Without hyperparameter tuning | 0.795823 | 94.59% | 0.7086 | 0.6777 | 0.6140 | **0.6443** |
 | With hyperparameter tuning | 0.886669 | **94.75%** | **0.7088** | **0.7191** | 0.5614 | 0.6305 |
+
+The frozen run verified that encoder weights stayed unchanged; fine-tuning
+verified that they changed. Both use the same architecture and data, so the
+comparison tests the effect of adapting the encoder.
 
 **Fine-tuning produced the main improvement.** Adapting the encoder to this task
 raised test AP from **0.4336 to 0.7086** and toxic F1 from **0.4449 to 0.6443**.

@@ -1,0 +1,6 @@
+run,learning_rate,weight_decay,dropout,best_epoch,selection_AP,delta_vs_reference,epochs_executed
+untuned,0.00002,0.01,0.1,3,0.739177,0.000000,3
+trial_1,0.00001,0.01,0.2,3,0.732119,-0.007058,3
+trial_2,0.00001,0.00,0.1,3,0.731382,-0.007795,3
+trial_3,0.00003,0.01,0.1,3,0.743152,0.003975,3
+trial_4,0.00005,0.10,0.2,3,0.742446,0.003269,3
